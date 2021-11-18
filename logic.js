@@ -1,7 +1,17 @@
 // variables to keep track of quiz state
 
+var scores = '';
+var questions = '';
+var answers = '' ;
+var timeLeft = ''; 
+
 
 // variables to reference DOM elements
+
+scoresEl = document.querySelector("");
+timerEl = document.querySelector("");
+
+
 
 
 //function to get the quiz going 
