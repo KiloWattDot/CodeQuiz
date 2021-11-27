@@ -7,41 +7,42 @@
     <title>Quiz Questions</title>
 </head>
 <body>
-    <header style="display:flex; justify-content: space-between; text-align: center;">
-        <a class="scores" href="./scores.html" style="text-decoration:underline; color: black;" >Highest Scores</a>
-        <span class="timer" > Timer: 60  </span>
-    </header> 
+    <header style="display:flex; justify-content: space-between; text-align: center;"> 
+        <a  class="scores" href="./scores.html" style="text-decoration:underline; color: black;"  >Highest Scores</a>
+        <span id="countdown"><span>
+   
+    </header>   
 
-    <main style="text-align: center;"> 
-        <h1 class="question" style="font-weight: bold;">Question #</h1>
-        <p class="question-text"> 
-            Question text goes here Question text goes here Question text goes here 
-            Question text goes here Question text goes here Question text goes here
-            Question text goes here</p>
-        <div>     
-            <button id="button1" >
-                <a href="#">Choice 1</a> 
-            </button>    
-             <br>
-             <br>
-
-            <button id="button2" >
-                <a href="#">Choice 2</a> 
-            </button>    
-            <br>
-            <br>
-
-            <button id="button3" >
-                <a href="#">Choice 3</a> 
-            </button>    
-            <br>
-            <br>
-            
-            <button id="button4" >
-                <a href="#">Choice 4</a> 
-            </button>    
-            
-        </div>
+    <div class="quiz-container" id="quiz"></div>
+    <h2 id="question">Questions 1</h2>
+    <h3 id="question-text"></h3>
+    <ul>
+        <li>
+            <input type="radio" id="a" class='answer'>
+            <label for="a" id="atext"></label>
+        </li>
+        <li>
+            <input type="radio" id="b" class='answer'>
+            <label for="b" id="btext"></label>
+        </li>
+        <li>
+            <input type="radio" id="c" class='answer'>
+            <label for="c" id="ctext"></label>
+        </li>
+        <li>
+            <input type="radio" id="d" class='answer'>
+            <label for="d" id="dtext"></label>
+        </li>
+    </ul>
     
+    <div> 
+
+    <!-- <button id="submit">Previous</button> -->
+    <button id="PressIt">Submit</button>
+    <!-- <button id="submit">Next</button> -->
+    
+    </div>
+
+    <script src=".//quiz-logic.js"></script>
 </body>
 </html>
