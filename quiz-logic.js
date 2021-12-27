@@ -1,20 +1,20 @@
 
-var qList = [
+const quizData = [
     {
         question:"Commonly used data types DO NOT include:",
         a:"a.strings",
         b:"b. booleans",
         c:"c. alerts",
         d:"d. numbers",
-        correct: "c. alerts",
+        correct: "c",
     },
     {
-        question:"The condition in coan if - else statement is enclosed within ____.",
+        question:"The condition in an if / else statement is enclosed within ____.",
         a: "a. quotes",
         b:"b. curly brackets",
         c:"c. parentheses",
         d:"d. square brackets",
-        correct: "d. all of the above",
+        correct: "c",
     },
     {
         question: "Arrays in JavaScript can be used to store ____.",
@@ -22,7 +22,7 @@ var qList = [
         b:"b. other arrays",
         c:"c.booleans",
         d:"d. all of the above",
-        correct: " d. all of the above ",
+        correct: " d. all of d above ",
     },
     {
         question: "String values must be enclosed within ____ when being assigned to variables.",
@@ -30,90 +30,95 @@ var qList = [
         b:"b. curly brackets",
         c:"c. quotes",
         d:"d. parentheses",
-        correct: "c.quotes",
+        correct: "c",
     },
     {
         question:"A very useful tool used during development and debugging for printing content to the debugger is:",
         a: "a. JavaScript",
         b: "b. terminal",
-        c: "c./ bash for loops",
-        d:  " d. console.log",
-        correct:  " d. console.log",
+        c: "c. bash for loops",
+        d: " d. console.log",
+        correct:  "d",
         
     },
 
  ];
 
-var score = 0;
-var i = 0;
-startTime = 60;
+
 
 
 // var qList = Array.from(qList);
-var qTest = document.querySelector('#question-text');
-var atext = document.querySelector('#atext')
-var btext = document.querySelector('#btext')
-var ctext = document.querySelector('#ctext')
-var dtext = document.querySelector('#dtext')
-var qAnswers = document.querySelectorAll('.answer')
+const quiz = document.getElementById('quiz')
+const questionsEl = document.getElementById('question-text')
+const atext = document.getElementById('atext')
+const btext = document.getElementById('btext')
+const ctext = document.getElementById('ctext')
+const dtext = document.getElementById('dtext')
+const answerEls = document.querySelectorAll('.answer')
+const Submit_btn = document.getElementById('submit')
+const timerEl = document.querySelector('#countdown')
 
-var timerEl = document.querySelector('#countdown');
+let score = 0
+let currentQuiz = 0
+let startTime = 60
+var timeLeft = 60;
+var HighScores = [];
 
+// function IntroPage() {
+//     if ()
+// }
 
-var NextQuestion_btn = document.querySelector('#PressIt');
+countdown()
+Quiz()
 
-
-
-function Next() {
+function Quiz() {
     
-    console.log('running code')
-    console.log(qList[i].question)
-    console.log(qList[i].a)
-    console.log(qList[i].b)
-    console.log(qList[i].c)
-    console.log(qList[i].d)
+    ClearAnswers()
+
+
+    const  currentQuizData = quizData[currentQuiz]
      
-    i++;
-    console.log(i);
-    Game();
-    countdown();
-}
-    
-function Game() {
-    if (i < 5) {
-        qTest.innerHTML = qList[i].question;
-        atext.innerHTML = qList[i].a;
-        btext.innerHTML = qList[i].b;
-        ctext.innerHTML = qList[i].c;
-        dtext.innerHTML = qList[i].d;
+ 
+    questionsEl.innerText = currentQuizData.question;
+    atext.innerText = currentQuizData.a;
+    btext.innerText = currentQuizData.b;
+    ctext.innerText = currentQuizData.c;
+    dtext.innerText = currentQuizData.d;
+
+    console.log(currentQuizData.question)
+    console.log(currentQuizData.a)
+    console.log(currentQuizData.b)
+    console.log(currentQuizData.c)
+    console.log(currentQuizData.d)
+    // console.log('correct answer:' + quizData.correct)
         
-        
-    }
 
 }
 
 function  ClearAnswers() {
-    qAnswers.forEach(qAnswer => qAnswer.checked = false)
+    answerEls.forEach(answerEl => answerEl.checked = false)
 }
 
 function getUserSelection() {
     let answer
-    qAnswers.forEach(qAnswer => {
-        if(qAnswer.checked) {
-            answer = qAnswer.id;
+    answerEls.forEach(answerEl => {
+        if(answerEl.checked) {
+            answer = answerEl.id;
         }
     })
+    // console.log('you selected:' + answer)
     return answer
 
 }
 
 function countdown() {
-    var timeLeft = 60;
+    // var timeLeft = 60;
+    // const answer
   
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timerInterval = setInterval(function() {
         timeLeft--;
-        timerEl.textContent = timeLeft + " seconds left till colorsplosion.";
+        timerEl.textContent = "Timer: " + timeLeft ;
     
         if(timeLeft === 0) {
           // Stops execution of action at set interval
@@ -121,30 +126,64 @@ function countdown() {
           // Calls function to create and append image
           
         }
+        // console.log("Time is " +timeLeft )
+
+        return timeLeft
+    
     
     }, 1000);
+}
+
+
+function SortScores(e) {
+    
+    
+    e.preventDefault();
+    // console.log(document.getElementById("initials").value)
+
   }
-
-  
-function CheckAnswer() {
-    
-
-}
-
-function Score() {
-
-}
-
-function Scoreboard() {
-    
-}
-
-
 
 
 
     // return "Next question displays"
 
-NextQuestion_btn.addEventListener("click", () => {}
-Game();
-countdown();
+    Submit_btn.addEventListener('click', (e) => { 
+        const answer = getUserSelection()
+        
+        
+        if(answer) {
+            if(answer === quizData[currentQuiz].correct) {
+                score++ 
+                timeLeft += 10
+                
+            
+            } else if (timeLeft < 10) {
+                timeLeft -= 1
+            }
+            else {
+                timeLeft -= 10
+            }
+        
+            currentQuiz++
+            
+
+            if(currentQuiz < quizData.length) {
+                Quiz()
+
+            } else {
+                quiz.innerHTML =`
+                <h2> You answered ${score}/${quizData.length} answers correctly</h2>
+
+                <form onsubmit= "${SortScores(e)}">
+                    <input type="text" id="initials"/> 
+                    <button>Submit</button>
+                </form>
+        
+                `
+                
+            }
+        }
+        
+    })
+    
+

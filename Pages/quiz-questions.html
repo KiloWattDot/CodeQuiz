@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions</title>
+</head>
+<body>
+    <header style="display:flex; justify-content: space-between; text-align: center;"> 
+        <a  class="scores" href="./scores.html" style="text-decoration:underline; color: black;"  >Highest Scores</a>
+        <span id="countdown"><span>
+   
+    </header>   
+
+    <div class="quiz-container" id="quiz">
+        <div class="quiz-header">
+            <h2>Questions 1</h2>
+            <h3 id="question-text"></h3>
+                <ul>
+                    <li>
+                        <input type="radio" name="answer" id="a" class='answer'>
+                        <label for="a" id="atext"></label>
+                    </li>
+                    <li>
+                        <input type="radio"  name="answer" id="b" class='answer'>
+                        <label for="b" id="btext"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="answer" id="c"class='answer'>
+                        <label for="c" id="ctext"></label>
+                    </li>
+                    <li>
+                        <input type="radio"  name="answer" id="d" class='answer'>
+                        <label for="d" id="dtext"></label>
+                    </li>
+                </ul>
+
+    
+    <div> 
+
+    <!-- <button id="submit">Previous</button> -->
+    <button id="submit">Submit</button>
+    <!-- <button id="submit">Next</button> -->
+    
+    </div>
+
+    <script src=".//quiz-logic.js"></script>
+</body>
+</html>
