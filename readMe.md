@@ -11,8 +11,7 @@ This is a Quiz to test a users knowledge on coding. There is 5 questions and you
 - [Description](#description)
 - [MockUp](#Mockup)
 - [Link to Work](#LinkToWork) 
-- [Authors](#authors)
-- [License](#license)
+
 
 ---
 ## __Mockup__
